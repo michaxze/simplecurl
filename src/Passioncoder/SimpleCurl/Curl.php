@@ -57,6 +57,10 @@ class Curl {
 		curl_setopt($c, CURLOPT_SSL_VERIFYHOST, 0);
 		curl_setopt($c, CURLOPT_SSL_VERIFYPEER, 0);
 
+        if (isset($options[CURLOPT_TIMEOUT])) {
+		  curl_setopt($c, CURLOPT_TIMEOUT, $options[CURLOPT_TIMEOUT]);
+        }
+
 		$query = !empty($params) ? http_build_query($params, '', '&', PHP_QUERY_RFC1738) : null;
 
 		switch (strtolower($method)) {
